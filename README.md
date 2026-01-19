@@ -51,3 +51,26 @@ source .venv/bin/activate
 # Install dependencies
 pip install -r requirements.txt
 
+
+### Environment
+
+Required variables for Label Studio integration:
+
+```bash
+DATABASE_URL=postgresql+asyncpg://USER:PASSWORD@HOST:PORT/DB
+GCS_BUCKET=your-curated-bucket
+GOOGLE_APPLICATION_CREDENTIALS=/path/to/gcp-credentials.json
+LABEL_STUDIO_BASE_URL=https://labelstudio.example.com
+LABEL_STUDIO_API_KEY=your-labelstudio-token
+LABEL_STUDIO_WEBHOOK_SECRET=shared-secret
+LABEL_STUDIO_MEDIA_TOKEN=media-token
+PUBLIC_BASE_URL=https://labeler.example.com
+LABEL_STUDIO_LABEL_CONFIG=<View>...</View>
+```
+
+## Usage
+
+Key endpoints:
+- `POST /labeling/start` with `{ "annotationSetId": "ANST..." }`
+- `GET /media/dataset-item/{dataset_item_id}?token=...`
+- `POST /webhooks/labelstudio`
